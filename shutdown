@@ -1,0 +1,3 @@
+#!/bin/sh
+
+# all my daemons die when I SIGTERM them, which comes next :)

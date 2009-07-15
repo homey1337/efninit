@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# what should your computer do today?
+
+#login -f homey1337
+
+echo
+echo "Starting a root shell, but this probably isn't what you want."
+echo "Edit /etc/uinit.d/task to make your computer do something useful."
+echo
+
+/bin/sh
