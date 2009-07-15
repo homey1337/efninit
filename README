@@ -1,0 +1,28 @@
+uinit alpha
+
+boots your computer; no frills!
+
+INSTALLATION INSTRUCTIONS
+
+$ make
+$ make install
+
+edit your bootloader to add 'init=/etc/uinit.d/init' to the kernel command
+line
+
+edit startup, task, and shutdown to fit your desires
+
+startup is run once, at startup. similarly, shutdown is run once when the
+system is shut down. (duh.)
+
+task is run and respawned as needed so the computer keeps doing something.
+
+HOW TO USE IT
+
+reboot.
+
+when you are done, you can hit Ctrl+Alt+Del to reboot. alternatively, you
+can send SIGINT to process 1. if you would rather poweroff, hit process 1
+with a SIGUSR1.
+
+that's all folks.
