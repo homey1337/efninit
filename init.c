@@ -17,15 +17,20 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
-#define SUBPROGRAM_BASE "/home/homey1337/pr/uinit/" // "/etc/uinit.d/"
+#include "config.h"
 
-#include "sysfini.c"
-#include "sysinit.c"
-
-#define RB_POWEROFF 0x4321fedc // from the reboot(2) manpage
+void subprogram(char* filename) {
+  int pid = fork();
+  if (!pid) {
+    execl(filename, filename, NULL);
+    _exit(1);
+  } else {
+    waitpid(pid, NULL, 0);
+  }
+}
 
 void handle_sig(int sig) {
-  sysfini();
+  subprogram(SUBPROGRAM_BASE "sysfini");
 
   if (sig == SIGINT) {  
     reboot(RB_AUTOBOOT);
@@ -39,17 +44,10 @@ int main(int argc, char** argv) {
   signal(SIGUSR1, handle_sig);
   reboot(RB_DISABLE_CAD);
   
-  sysinit();
+  subprogram(SUBPROGRAM_BASE "sysinit");
 
   for (;;) {
-    int pid = fork();
-    if (!pid) {
-      execl(SUBPROGRAM_BASE "task", "task", NULL);
-      _exit(1);
-    } else {
-      waitpid(pid, NULL, 0);
-    }
-
+    subprogram(SUBPROGRAM_BASE "task");
     sleep(5);
   }
 

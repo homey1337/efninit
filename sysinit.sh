@@ -13,7 +13,7 @@
 #sh /bin/rm -f /etc/mtab*
 /bin/cp /proc/mounts /etc/mtab
 /bin/mount -a
-#sh /bin/rm -rf /etc/nologin /etc/shutdownpid /var/lock/* /tmp/* /tmp/.* /forcefsck
+#sh /bin/rm -rf /etc/nologin /etc/shutdownpid /var/lock/* /tmp/* /tmp/.* /forcefsck &>/dev/null
 /bin/find /var/run ! -type d -exec rm -f -- {} ;
 /bin/cp /dev/null /var/run/utmp
 /bin/chmod 0664 /var/run/utmp

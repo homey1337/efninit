@@ -71,15 +71,23 @@ for line in f:
 
 f.close()
 f = open(fn_name + '.c', 'w')
+print >>f, '''
+#include <unistd.h>
+#include <sys/reboot.h>
+#include <sys/wait.h>
+#include <sys/types.h>
+#include "config.h"
+'''
 for line in top_lines:
   print >>f, line
 print >>f, '''
-void %s(void) {
+int main() {
   int pid;
   int stat_loc;
-''' % fn_name
+'''
 for line in fn_lines:
   print >>f, line
 print >>f, '''
+  return 0;
 }
 '''
