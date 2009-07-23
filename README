@@ -26,3 +26,20 @@ can send SIGINT to process 1. if you would rather poweroff, hit process 1
 with a SIGUSR1.
 
 that's all folks.
+
+CUSTOMIZATION
+
+init is incredibly simple; it runs /etc/uinit.d/sysinit, then restarts
+/etc/uinit.d/task as long as it exits, and after being hit with SIGINT or
+SIGUSR1 it runs /etc/uinit.d/sysfini.
+
+the sysinit and sysfini programs are written in a pseudo-shell language and
+compiled by make_sys_c.py into C programs for compilation.
+
+sysinit and sysfini are written to be the bare minimum useful system
+configuration. ideally, they work for you without being edited.
+
+for everything else, they call /etc/uinit.d/startup and
+/etc/uinit.d/shutdown (respectively) to do local customization. these two
+files, and /etc/uinit.d/task, must be written by the user (empty files are
+distributed with uinit, because something needs to be present).

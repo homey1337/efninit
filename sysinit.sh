@@ -17,9 +17,5 @@
 /bin/find /var/run ! -type d -exec rm -f -- {} ;
 /bin/cp /dev/null /var/run/utmp
 /bin/chmod 0664 /var/run/utmp
-/bin/mkdir /tmp/.ICE-unix
-/bin/chmod 1777 /tmp/.ICE-unix
-/bin/mkdir /tmp/.X11-unix
-/bin/chmod 1777 /tmp/.X11-unix
 /sbin/ifconfig lo 127.0.0.1 up
 #subprogram startup
