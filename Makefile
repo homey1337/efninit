@@ -14,11 +14,7 @@ sys%.c:	sys%.sh make_sys_c.py
 
 install:	init sysinit sysfini
 	mkdir -p /etc/uinit.d/
-	cp init sysfini sysinit startup shutdown task /etc/uinit.d/
-
-update:	init sysinit sysfini
-	cp sysfini sysinit /etc/uinit.d/
-	cp init /etc/uinit.d/newinit
+	cp -uv init sysfini sysinit startup shutdown task /etc/uinit.d/
 
 clean:
 	rm -f *.o sys*.c
