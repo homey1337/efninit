@@ -1,7 +1,10 @@
 all:	init sysinit sysfini
 
-init:	init.c
-	${CC} ${CFLAGS} init.c -o init
+init:	init.o
+	ld -s $< -o $@
+
+%.o:	%.asm
+	nasm -felf $< -o $@
 
 sys%:	sys%.c
 	$(CC) $(CFLAGS) $< -o $@
