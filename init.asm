@@ -113,13 +113,15 @@ subprogram:
     ret
 
 handle_sig:
+  push eax
+
   mov ebx, sysfini
   mov ecx, sysfini_args
   call subprogram
-  
+
   mov edx, RB_POWEROFF
-  pop eax
-  cmp eax, SIGINT
+  pop eax  
+  cmp eax, SIGUSR1
   je .poweroff
     mov edx, RB_AUTOBOOT
   .poweroff:
