@@ -1,6 +1,6 @@
 ;; the cornerstone of my vastly simplified init system
 ;;
-;; it has several helper scripts that live in /etc/uinit.d/
+;; it has several helper scripts that live in /etc/efninit.d/
 ;; 
 ;; startup: startup bits that you would want to configure
 ;;   hostname, network, console font, daemons, etc
@@ -20,7 +20,7 @@
 %define SIGINT 2
 %define SIGUSR1 10
 
-%define SUBPROGRAM_BASE "/etc/uinit.d/"
+%define SUBPROGRAM_BASE "/etc/efninit.d/"
 
 %define LINUX_REBOOT_MAGIC1 0xfee1dead
 %define LINUX_REBOOT_MAGIC2 672274793

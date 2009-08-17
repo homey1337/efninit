@@ -1,4 +1,4 @@
-uinit alpha
+efninit alpha
 
 boots your computer; no frills!
 
@@ -7,7 +7,7 @@ INSTALLATION INSTRUCTIONS
 $ make
 $ make install
 
-edit your bootloader to add 'init=/etc/uinit.d/init' to the kernel command
+edit your bootloader to add 'init=/etc/efninit.d/init' to the kernel command
 line
 
 edit startup, task, and shutdown to fit your desires
@@ -29,9 +29,9 @@ that's all folks.
 
 CUSTOMIZATION
 
-init is incredibly simple; it runs /etc/uinit.d/sysinit, then restarts
-/etc/uinit.d/task as long as it exits, and after being hit with SIGINT or
-SIGUSR1 it runs /etc/uinit.d/sysfini.
+init is incredibly simple; it runs /etc/efninit.d/sysinit, then restarts
+/etc/efninit.d/task as long as it exits, and after being hit with SIGINT or
+SIGUSR1 it runs /etc/efninit.d/sysfini.
 
 the sysinit and sysfini programs are written in a pseudo-shell language and
 compiled by make_sys_c.py into C programs for compilation.
@@ -39,7 +39,7 @@ compiled by make_sys_c.py into C programs for compilation.
 sysinit and sysfini are written to be the bare minimum useful system
 configuration. ideally, they work for you without being edited.
 
-for everything else, they call /etc/uinit.d/startup and
-/etc/uinit.d/shutdown (respectively) to do local customization. these two
-files, and /etc/uinit.d/task, must be written by the user (empty files are
-distributed with uinit, because something needs to be present).
+for everything else, they call /etc/efninit.d/startup and
+/etc/efninit.d/shutdown (respectively) to do local customization. these two
+files, and /etc/efninit.d/task, must be written by the user (empty files are
+distributed with efninit, because something needs to be present).
